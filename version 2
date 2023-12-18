@@ -1,0 +1,83 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class LanguageTeachingApp {
+    private static final Map<String, String> swahiliToEnglishDictionary = new HashMap<>();
+    private static final Map<String, String> englishToSwahiliDictionary = new HashMap<>();
+
+    static {
+        // Populate Swahili to English dictionary
+        swahiliToEnglishDictionary.put("karibu", "welcome");
+        swahiliToEnglishDictionary.put("rafiki", "friend");
+        swahiliToEnglishDictionary.put("jina", "name");
+        swahiliToEnglishDictionary.put("nyumbani", "home");
+
+
+        // Populate English to Swahili dictionary
+        englishToSwahiliDictionary.put("welcome", "karibu");
+        englishToSwahiliDictionary.put("friend", "rafiki");
+        englishToSwahiliDictionary.put("name", "jina");
+        englishToSwahiliDictionary.put("home", "nyumbani");
+
+    }
+
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        boolean appRunning = true;
+
+        System.out.println("Welcome to the Swahili-English Language Teaching App!");
+
+        while (appRunning) {
+            System.out.println("\nEnter 1 for Swahili to English translation");
+            System.out.println("Enter 2 for English to Swahili translation");
+            System.out.println("Enter 3 to exit");
+            System.out.print("Enter your choice: ");
+
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+
+            switch (choice) {
+                case 1:
+                    translateSwahiliToEnglish(scanner);
+                    break;
+                case 2:
+                    translateEnglishToSwahili(scanner);
+                    break;
+                case 3:
+                    appRunning = false;
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please enter a valid option.");
+                    break;
+            }
+        }
+
+        System.out.println("Thank you for using the Language Teaching App!");
+    }
+
+    private static void translateSwahiliToEnglish(Scanner scanner) {
+        System.out.print("Enter a word or phrase in Swahili: ");
+        String swahiliInput = scanner.nextLine().toLowerCase();
+
+        if (swahiliToEnglishDictionary.containsKey(swahiliInput)) {
+            String englishTranslation = swahiliToEnglishDictionary.get(swahiliInput);
+            System.out.println("Translation in English: " + englishTranslation);
+        } else {
+            System.out.println("Translation not found in the dictionary.");
+        }
+    }
+
+    private static void translateEnglishToSwahili(Scanner scanner) {
+        System.out.print("Enter a word or phrase in English: ");
+        String englishInput = scanner.nextLine().toLowerCase();
+
+        if (englishToSwahiliDictionary.containsKey(englishInput)) {
+            String swahiliTranslation = englishToSwahiliDictionary.get(englishInput);
+            System.out.println("Translation in Swahili: " + swahiliTranslation);
+        } else {
+            System.out.println("Translation not found in the dictionary.");
+        }
+    }
+}
