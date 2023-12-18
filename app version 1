@@ -1,0 +1,27 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class LanguageLearningApp {
+
+    public static void main(String[] args) {
+        // Create a map to store phrases in BSL, English, and Swahili
+        Map<String, String[]> phrases = new HashMap<>();
+
+        // Adding phrases - BSL, English, Swahili
+        phrases.put("Hello", new String[]{"BSL_Hello", "English_Hello", "Swahili_Hello"});
+        phrases.put("Thank you", new String[]{"BSL_ThankYou", "English_ThankYou", "Swahili_ThankYou"});
+        // Add other phrases in a similar way
+
+        // Display the phrases
+        for (Map.Entry<String, String[]> entry : phrases.entrySet()) {
+            String phrase = entry.getKey();
+            String[] translations = entry.getValue();
+
+            System.out.println("Phrase: " + phrase);
+            System.out.println("BSL: " + translations[0]);
+            System.out.println("English: " + translations[1]);
+            System.out.println("Swahili: " + translations[2]);
+            System.out.println();
+        }
+    }
+}
